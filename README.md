@@ -26,6 +26,7 @@ This faucet app allows anyone who passes a captcha to request tokens for a Cosmo
    MAX_CREDIT=100000000  # 100_000_000 == 100nolus
    faucet
     ```
+   NB: A dev proxy is configured to point to `http://localhost:8000`. If you plan to chage the port or want to point to a different faucet backend, modify the configuration in `vue.config.js`.
 
 5. Make sure the faucet account have funds. The faucet basically performs a `tx send` for every token request, so make sure the faucet account have enough tokens (more tokens could be added later by sending more funds to the faucet account)..
     ```
