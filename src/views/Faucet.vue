@@ -83,9 +83,18 @@ export default {
       axios
         .post(this.config.claimUrl, {
           address: this.fields.address,
-          response: this.fields.response
+          coins: [ this.config.faucetAmount]
         })
-        .then(() => {
+        .then((response) => {
+          console.log(response);
+          if (response.data.transfers && response.data.transfers[0] && response.data.transfers[0].error) {
+            this.$store.commit("notifyError", {
+              title: "Error Sending",
+              body: `An error occurred while trying to send: "${response.data.transfers[0].error}"`
+            });
+            this.sending = false;
+            return;
+          }
           this.sending = false;
           this.$store.commit("notify", {
             title: "Successfully Sent",

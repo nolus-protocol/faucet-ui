@@ -16,5 +16,16 @@ module.exports = {
   },
   configureWebpack: {
     devtool: "source-map"
+  },
+  devServer: {
+    proxy: {
+      '^/faucet': {
+        target: 'http://localhost:8000',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/faucet': ''
+        }
+      }
+    }
   }
 };
