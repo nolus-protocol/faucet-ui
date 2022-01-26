@@ -23,7 +23,8 @@ This faucet app allows anyone who passes a captcha to request tokens for a Cosmo
    export MNEMONIC='guard city cruise fall foster feature kiwi eager unlock humble mutual stem rug legend spoil warfare select describe damage mix satisfy salmon robust gallery'
    export CLI_NAME=cosmzoned
    export DENOMS=unolus
-   MAX_CREDIT=100000000  # 100_000_000 == 100nolus
+   export NODE=tcp://localhost:26657
+   export MAX_CREDIT=100000000  # 100_000_000 == 100nolus
    faucet
     ```
    NB: A dev proxy is configured to point to `http://localhost:8000`. If you plan to chage the port or want to point to a different faucet backend, modify the configuration in `vue.config.js`.
