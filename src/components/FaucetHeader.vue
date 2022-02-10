@@ -1,6 +1,6 @@
 <template lang="pug">
 .section-header
-  h1 Secret Network
+  h1 Nolus Network
   p Use this faucet to get tokens for the #[span.chain {{ config.chain }}] testnet. Please don't abuse this service&mdash;the number of available tokens is limited.
 </template>
 
@@ -9,8 +9,8 @@ import { mapGetters } from "vuex";
 export default {
   name: "faucet-header",
   computed: {
-    ...mapGetters(["config"])
-  }
+    ...mapGetters(["config"]),
+  },
 };
 </script>
 
