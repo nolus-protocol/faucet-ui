@@ -12,7 +12,7 @@
           :sitekey="config.recaptchaSiteKey")
         form-msg(name='Captcha' type='required' v-if='!$v.fields.response.required')
       form-group(:error='$v.fields.address.$error'
-        field-id='faucet-address' field-label='Send To')
+        field-id='faucet-address' field-label='Send to:')
         field#faucet-address(
           type='text'
           v-model='fields.address'
@@ -50,17 +50,17 @@ export default {
     FormMsg,
     // SectionJoin,
     // SectionLinks,
-    VueRecaptcha
+    VueRecaptcha,
   },
   computed: {
-    ...mapGetters(["config"])
+    ...mapGetters(["config"]),
   },
   data: () => ({
     fields: {
       response: "",
-      address: ""
+      address: "",
     },
-    sending: false
+    sending: false,
   }),
   methods: {
     resetForm() {
@@ -83,14 +83,18 @@ export default {
       axios
         .post(this.config.claimUrl, {
           address: this.fields.address,
-          coins: [ this.config.faucetAmount]
+          coins: [this.config.faucetAmount],
         })
         .then((response) => {
           console.log(response);
-          if (response.data.transfers && response.data.transfers[0] && response.data.transfers[0].error) {
+          if (
+            response.data.transfers &&
+            response.data.transfers[0] &&
+            response.data.transfers[0].error
+          ) {
             this.$store.commit("notifyError", {
               title: "Error Sending",
-              body: `An error occurred while trying to send: "${response.data.transfers[0].error}"`
+              body: `An error occurred while trying to send: "${response.data.transfers[0].error}"`,
             });
             this.sending = false;
             return;
@@ -98,15 +102,15 @@ export default {
           this.sending = false;
           this.$store.commit("notify", {
             title: "Successfully Sent",
-            body: `Sent tokens to ${this.fields.address}`
+            body: `Sent tokens to ${this.fields.address}`,
           });
           this.resetForm();
         })
-        .catch(err => {
+        .catch((err) => {
           this.sending = false;
           this.$store.commit("notifyError", {
             title: "Error Sending",
-            body: `An error occurred while trying to send: "${err.message}"`
+            body: `An error occurred while trying to send: "${err.message}"`,
           });
         });
     },
@@ -119,19 +123,19 @@ export default {
         this.bech32error = error.message;
         return false;
       }
-    }
+    },
   },
   validations() {
     return {
       fields: {
         address: {
           required,
-          bech32Validate: this.bech32Validate
+          bech32Validate: this.bech32Validate,
         },
-        response: { required }
-      }
+        response: { required },
+      },
     };
-  }
+  },
 };
 </script>
 
@@ -151,10 +155,6 @@ export default {
   z-index 10
   label
     display none
-
-  input:-webkit-autofill
-    -webkit-text-fill-color var(--txt) !important
-    -webkit-box-shadow 0 0 0px 3rem var(--app-fg) inset
 
   .section-main
     padding 0 1rem
