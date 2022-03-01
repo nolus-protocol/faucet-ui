@@ -144,17 +144,58 @@ label[for="faucet-address"]
   margin-left 0 !important
   padding-left 0 !important
 
+.ni-btn.js-disabled,
 .ni-btn:disabled 
   opacity: 1 !important;
 
+.ni-btn.js-disabled .ni-btn__container ,
 .ni-btn:disabled .ni-btn__container
   background-color rgba(7, 45, 99, 0.05) !important
   padding-right: 32px !important
   background-image: none !important
 
+.ni-btn.js-disabled .ni-btn__value,
 .ni-btn:disabled .ni-btn__value
   color #072d63 !important
+
+.ni-btn.js-disabled.success .ni-btn__value,
+.ni-btn.success:disabled .ni-btn__value
+  color #50e3c2 !important
   
+.ni-btn.js-disabled.success .ni-btn__container
+.ni-btn.success:disabled .ni-btn__container
+  background-image: url('../assets/media/check-circle-round.svg') !important;
+  background-size: 24px !important;
+  background-position: 32px center !important;
+  background-repeat: no-repeat !important;
+
+.ni-btn.js-disabled.success .ni-btn__container
+.ni-btn.success:disabled .ni-btn__container
+  padding-left: 64px !important;
+
+.ni-btn.js-disabled.failed .ni-btn__value,
+.ni-btn.failed:disabled .ni-btn__value
+  color #ff7044 !important
+  
+.ni-btn.js-disabled.failed .ni-btn__container
+.ni-btn.failed:disabled .ni-btn__container
+  background-image: url('../assets/media/check-circle-round.svg') !important;
+  background-size: 24px !important;
+  background-position: 32px center !important;
+  background-repeat: no-repeat !important;
+
+.ni-btn.js-disabled.failed .ni-btn__container
+.ni-btn.failed:disabled .ni-btn__container
+  padding-left: 64px !important;
+
+.ni-btn .js-error-message
+  display: block !important;
+  width: 100%;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #072d63;
+  margin-top: 8px;
 
 
 

@@ -80,6 +80,9 @@ export default {
       if (this.$v.$error) return;
 
       this.sending = true;
+
+      submitSetState("Sending Tokens...", "loading");
+
       axios
         .post(this.config.claimUrl, {
           address: this.fields.address,
@@ -97,6 +100,7 @@ export default {
               body: `An error occurred while trying to send: "${response.data.transfers[0].error}"`,
             });
             this.sending = false;
+            submitSetState("Unsuccessful", "failed");
             return;
           }
           this.sending = false;
@@ -105,6 +109,7 @@ export default {
             body: `Sent tokens to ${this.fields.address}`,
           });
           this.resetForm();
+          submitSetState("Sent Successfuly", "success");
         })
         .catch((err) => {
           this.sending = false;
@@ -112,6 +117,7 @@ export default {
             title: "Error Sending",
             body: `An error occurred while trying to send: "${err.message}"`,
           });
+          submitSetState("Unsuccessful", "failed");
         });
     },
     bech32Validate(param) {
@@ -136,6 +142,47 @@ export default {
       },
     };
   },
+};
+
+const submitSetState = (text, state) => {
+  const button = document.querySelector(".ni-btn");
+  const buttonValue = button.querySelector(".ni-btn__value");
+
+  buttonValue.innerHTML = text;
+
+  if (state === "loading") {
+    button.classList.add("js-disabled");
+
+    if (
+      typeof button.querySelector(".js-error-message") !== "undefined" &&
+      button.querySelector(".js-error-message") !== null
+    ) {
+      button.querySelector(".js-error-message").remove();
+    }
+  } else if (state === "success") {
+    button.classList.add("success");
+
+    if (
+      typeof button.querySelector(".js-error-message") !== "undefined" &&
+      button.querySelector(".js-error-message") !== null
+    ) {
+      button.querySelector(".js-error-message").remove();
+    }
+  } else if (state === "failed") {
+    button.classList.add("failed");
+
+    if (
+      typeof button.querySelector(".js-error-message") === "undefined" ||
+      button.querySelector(".js-error-message") === null
+    ) {
+      const message =
+        '<span class="js-error-message">Refresh the page and try again</span>';
+      button.insertAdjacentHTML("beforeend", message);
+    } else {
+      button.querySelector(".js-error-message").innerHTML =
+        "Refresh the page and try again";
+    }
+  }
 };
 </script>
 
