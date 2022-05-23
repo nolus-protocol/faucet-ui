@@ -1,4 +1,4 @@
-<template lang='pug'>
+<template lang="pug">
 div(:class='cssClass')
   span.ni-form-group__sub-label(v-if="subLabel")
     | {{ subLabel }}
@@ -45,7 +45,9 @@ export default {
 
 .ni-form-group__sub-label ~ .ni-form-group__label
   line-height 1rem
-
+.ni-form-group__field
+  .faucet-response
+    background-color yellow
 .ni-form-group--error
   .ni-field, .ni-select
     border-color danger

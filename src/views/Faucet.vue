@@ -24,7 +24,6 @@
         btn(v-if='sending' value='Sending...' disabled color="primary" size="lg")
         btn(v-else @click='onSubmit' value="Send me tokens" color="primary" size="lg" icon="send")
   section-join
-  section-links
 </template>
 
 <script>
@@ -39,7 +38,6 @@ import FormGroup from "../components/NiFormGroup";
 import FormMsg from "../components/NiFormMsg";
 import FaucetHeader from "../components/FaucetHeader";
 // import SectionJoin from "../components/SectionJoin.vue";
-// import SectionLinks from "../components/SectionLinks.vue";
 export default {
   name: "faucet",
   components: {
@@ -49,19 +47,22 @@ export default {
     FaucetHeader,
     FormMsg,
     // SectionJoin,
-    // SectionLinks,
-    VueRecaptcha,
+    //SectionLinks,
+    VueRecaptcha
   },
   computed: {
-    ...mapGetters(["config"]),
+    ...mapGetters(["config"])
   },
   data: () => ({
     fields: {
       response: "",
-      address: "",
+      address: ""
     },
-    sending: false,
+    sending: false
   }),
+  mounted() {
+    (() => {})();
+  },
   methods: {
     resetForm() {
       this.fields.address = "";
@@ -86,9 +87,9 @@ export default {
       axios
         .post(this.config.claimUrl, {
           address: this.fields.address,
-          coins: [this.config.faucetAmount],
+          coins: [this.config.faucetAmount]
         })
-        .then((response) => {
+        .then(response => {
           console.log(response);
           if (
             response.data.transfers &&
@@ -97,7 +98,7 @@ export default {
           ) {
             this.$store.commit("notifyError", {
               title: "Error Sending",
-              body: `An error occurred while trying to send: "${response.data.transfers[0].error}"`,
+              body: `An error occurred while trying to send: "${response.data.transfers[0].error}"`
             });
             this.sending = false;
             submitSetState("Unsuccessful", "failed");
@@ -106,16 +107,16 @@ export default {
           this.sending = false;
           this.$store.commit("notify", {
             title: "Successfully Sent",
-            body: `Sent tokens to ${this.fields.address}`,
+            body: `Sent tokens to ${this.fields.address}`
           });
           this.resetForm();
           submitSetState("Sent Successfuly", "success");
         })
-        .catch((err) => {
+        .catch(err => {
           this.sending = false;
           this.$store.commit("notifyError", {
             title: "Error Sending",
-            body: `An error occurred while trying to send: "${err.message}"`,
+            body: `An error occurred while trying to send: "${err.message}"`
           });
           submitSetState("Unsuccessful", "failed");
         });
@@ -129,19 +130,19 @@ export default {
         this.bech32error = error.message;
         return false;
       }
-    },
+    }
   },
   validations() {
     return {
       fields: {
         address: {
           required,
-          bech32Validate: this.bech32Validate,
+          bech32Validate: this.bech32Validate
         },
-        response: { required },
-      },
+        response: { required }
+      }
     };
-  },
+  }
 };
 
 const submitSetState = (text, state) => {

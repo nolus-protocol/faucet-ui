@@ -48,44 +48,47 @@ h1,
 .top-bar,
 #bottom
   display none !important
-
 h1
-  font-size 56px !important
-  font-weight 700 !important
-  line-height 64px !important
-  color #072d63 !important
+  font-size 56px
+  font-weight bold
+  font-stretch normal
+  font-style normal
+  line-height 1.45
+  letter-spacing -1.4px
+  text-align left
+  margin-bottom 24px
 
 p
-  margin-top: 24px !important;
-  font-size 16px !important
-  font-weight 400 !important
-  line-height 24px !important
-  color #072d63 !important
+  font-family Garet
+  font-size 14px
+  font-weight normal
+  font-stretch normal
+  font-style normal
+  line-height 1.43
+  letter-spacing normal
+  text-align left
 
 .section 
   background #f7f9fc !important
 
 .ni-field
+  height 64px!important
+  border-radius 8px!important
+  box-shadow 0 12px 32px 0 rgba(7, 45, 99, 0.05)!important
+  border solid 1px rgba(7, 45, 99, 0.1)!important
+  background-color #fff!important
   font-size 18px !important
   font-weight 400
   line-height 32px !important
-  border none
   color #072d63 !important
   width 100%
-  border-radius 8px !important
-  background #fff !important
-  border solid 1px rgba(7,45,99,0.1) !important
   padding 16px 24px !important
-  height: auto !important
 
-.ni-field:focus {
-  border-color: #072d63!important;
-}
 
 .ni-field::placeholder
-  color #072d63 !important
+  color var(--txt)!important
   font-weight 400
-  opacity 1
+  opacity 0.5
 
 label[for="faucet-address"]
   display block !important
@@ -93,7 +96,6 @@ label[for="faucet-address"]
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  color: #072d63;
   margin-bottom: 8px;
 
 .ni-form-group 
@@ -105,8 +107,9 @@ label[for="faucet-address"]
   display block
   flex: auto !important;
 
+
 .section input:-webkit-autofill {
-  -webkit-text-fill-color: #072d63;
+  -webkit-text-fill-color: var(--var);
   -webkit-box-shadow: 0 0 0 3rem #fff inset !important
   background: transparent !important;
 }
@@ -117,7 +120,6 @@ label[for="faucet-address"]
   cursor: pointer;
   position: relative;
   background-image: url('../assets/media/arrow-backward.svg');
-  padding-top: 64px !important
 
 .ni-btn .ni-btn__container
   background-color: #ff7044 !important;
@@ -157,7 +159,7 @@ label[for="faucet-address"]
 
 .ni-btn.js-disabled .ni-btn__value,
 .ni-btn:disabled .ni-btn__value
-  color #072d63 !important
+  color var(--txt) !important
 
 .ni-btn.js-disabled.success .ni-btn__value,
 .ni-btn.success:disabled .ni-btn__value
@@ -195,10 +197,8 @@ label[for="faucet-address"]
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #072d63;
+  color: var(--txt)
   margin-top: 8px;
-
-
 
 @font-face {
   font-display: swap;
@@ -214,4 +214,19 @@ label[for="faucet-address"]
   src: url("./fonts/garet-bold.woff2");
   font-weight: 700;
   font-style: normal;
+}
+
+.rc-anchor-light.rc-anchor-normal {
+  width 800px!important
+}
+
+
+.g-recaptcha {
+    transform:scale(0.77);
+    transform-origin:0 0;
+}
+
+iframe {
+  border 1px solid #000
+  border-top 2px solid #000
 }

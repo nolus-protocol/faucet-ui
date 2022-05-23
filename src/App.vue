@@ -10,24 +10,20 @@
   //- .logo
   //-   img(src="~assets/logo.png" width="270" height="311")
   router-view
-  notifications(:notifications='notifications' theme='cosmos')
   #bottom &copy; 2018 Interchain Foundation
 </template>
-
 
 <script>
 import { mapGetters } from "vuex";
 import { TmCookieConsent } from "@tendermint/ui";
-import Notifications from "@nylira/vue-notifications";
 
 export default {
   name: "app",
   components: {
-    Notifications,
     TmCookieConsent
   },
   computed: {
-    ...mapGetters(["notifications", "config"])
+    ...mapGetters(["config"])
   },
   mounted() {}
 };
