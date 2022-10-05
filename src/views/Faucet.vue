@@ -12,11 +12,11 @@
           :sitekey="config.recaptchaSiteKey")
         form-msg(name='Captcha' type='required' v-if='!$v.fields.response.required')
       form-group(:error='$v.fields.address.$error'
-        field-id='faucet-address' field-label='Send to:')
+        field-id='faucet-address' field-label='Recipient')
         field#faucet-address(
           type='text'
           v-model='fields.address'
-          placeholder='Testnet address'
+          placeholder=''
           size="lg")
         form-msg(name='Address' type='required' v-if='!$v.fields.address.required')
         form-msg(name='Address' type='bech32' :body="bech32error" v-else-if='!$v.fields.address.bech32Validate')

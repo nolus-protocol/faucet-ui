@@ -24,12 +24,7 @@ export default {
 <style lang="stylus">
 @import '~variables'
 .ni-form-group
-  padding 0.5rem 1rem
   position relative
-
-  &:last-child
-    border-bottom none
-
   input
     width 100%
 
@@ -73,4 +68,12 @@ export default {
     > .ni-field
     > .ni-field-group
       width 100%
+
+      &:hover
+      > ni-field
+        border: 1px solid #8396B1 !important;
+
+      &:active
+      > ni-field
+        border: 1px solid #2868E1 !important;
 </style>

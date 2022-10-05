@@ -1,7 +1,9 @@
-<template lang="pug">
-.section-header
-  h1 Nolus Network
-  p Use this faucet to get tokens for the #[span.chain {{ config.chain }}] testnet.<br/> Please don't abuse this service&mdash;the number of available tokens is <br/> limited.
+<template>
+  <div class="section-header">
+    <h1>Rila Testnet Faucet</h1>
+    <div class="separator-line"></div>
+    <p>Use this faucet to get tokens for the latest Rila testnet. Please don't abuse this service as the number of available tokens is limited.</p>
+  </div>
 </template>
 
 <script>
@@ -18,8 +20,6 @@ export default {
 @import '~variables';
 
 .section-header {
-  padding-left:1rem;
-  padding-right:1rem;
   span.chain {
     white-space: nowrap;
   }

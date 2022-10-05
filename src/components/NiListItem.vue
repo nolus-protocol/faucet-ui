@@ -151,6 +151,10 @@ export default {
     top 0.5rem - px
     right 1rem
 
+..ni-btn
+  &:hover
+    background: red !important;
+
 .ni-li-container
   display flex
   flex-flow row nowrap
