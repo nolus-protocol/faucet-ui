@@ -7,8 +7,8 @@
       .value {{ config.chain }}
     //- .right
     //-   a(href="https://explorecosmos.network" target="_blank") explorer #[i.material-icons assessment]
-  //- .logo
-  //-   img(src="~assets/logo.png" width="270" height="311")
+  .logo
+    img(src="~assets/logo.svg" width="125" height="32")
   router-view
   #bottom &copy; 2018 Interchain Foundation
 </template>
@@ -36,9 +36,9 @@ export default {
 
 img
   position absolute
-  top -7rem
-  left -7rem
-  z-index 1
+  top 1rem
+  margin-left: 24px
+  z-index 999
 
 .top-bar
   position fixed
